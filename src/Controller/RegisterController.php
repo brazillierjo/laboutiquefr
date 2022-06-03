@@ -7,12 +7,13 @@ use App\Form\RegisterType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class RegisterController extends AbstractController
 {
     #[Route('/inscription', name: 'register')]
-    public function index(Request $request, ManagerRegistry $doctrine)
+    public function index(Request $request, ManagerRegistry $doctrine, UserPasswordHasherInterface $passwordHasher)
     {
         $user = new User();
         $form = $this->createForm(RegisterType::class, $user);
@@ -21,6 +22,10 @@ class RegisterController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $user = $form->getData();
+
+            $password = $passwordHasher->hashPassword($user, $user->getPassword());
+
+            $user->setPassword($password);
 
             $doctrine->getManager()->persist($user);
             $doctrine->getManager()->flush();
