@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class RegisterController extends AbstractController
 {
-    #[Route('/inscription', name: 'register')]
+    #[Route('/inscription', name: 'app_register')]
     public function index(Request $request, ManagerRegistry $doctrine, UserPasswordHasherInterface $passwordHasher)
     {
         $user = new User();
