@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}La boutique Française | Mes adresses{% endblock %}
+
+{% block content %}
+
+<a class="btn btn-info btn-sm float-right" href="{{ path('app_account_new_address') }}">Ajouter une adresse</a>
+<h1>Mes adresses</h1>
+<a href="{{ path('app_account') }}">Retourner sur mon compte</a>
+
+<hr>
+
+{% if app.user.addresses|length == 0 %}
+<p>Vous n'avez pas encore ajouté d'adresse pour le moment.</p>
+
+{% else %}
+<div class="row">
+    {% for address in app.user.addresses %}
+    <div class="card mx-5" style="width: 20rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{ address.name }}</h5>
+            <p class="card-text">{{ address.firstname }} {{ address.lastname }}</p>
+
+            {% if address.company %}
+            <p class="card-text">{{ address.company }}</p>
+            {% endif %}
+
+            <p class="card-text">{{ address.address }}</p>
+
+            <p class="card-text">{{ address.city }} {{ address.postal }}</p>
+            <p class="card-text">{{ address.country }}</p>
+        </div>
+        <div class="mx-auto py-2">
+            <a href="" class="btn btn-info btn-sm">Editer</a>
+            <a href="" class="btn btn-danger btn-sm">Supprimer</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endif %}
+
+{% endblock %}
