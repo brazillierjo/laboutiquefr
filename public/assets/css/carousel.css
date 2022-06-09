@@ -8,6 +8,11 @@ body {
     color: #5a5a5a;
 }
 
+.cart-icon {
+    height: 25px;
+    margin-right: 5px;
+    margin-left: 10px;
+}
 .footer-custom {
     text-align: center;
     margin-top: 80px;
