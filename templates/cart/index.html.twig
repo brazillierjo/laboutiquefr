@@ -63,7 +63,7 @@
 <div class="text-right m-5 px-5">
     <b>Nombre d'article: {{ cart|length }}</b> <br>
     <b>Total du panier: {{ total }}€</b> <br>
-    <a href="" class="btn btn-success btn-block mt-3">Passer la commande</a>
+    <a href="{{ path('app_order') }}" class="btn btn-success btn-block mt-3">Passer la commande</a>
 </div>
 {% endif %}
 {% endblock %}

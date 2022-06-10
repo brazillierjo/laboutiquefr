@@ -8,6 +8,10 @@ body {
     color: #5a5a5a;
 }
 
+.block-small {
+    max-width: 600px;
+    margin: 0 auto;
+}
 .cart-icon {
     height: 25px;
     margin-right: 5px;

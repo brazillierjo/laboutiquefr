@@ -31,8 +31,8 @@
             <p class="card-text">{{ address.country }}</p>
         </div>
         <div class="mx-auto py-2">
-            <a href="" class="btn btn-info btn-sm">Editer</a>
-            <a href="" class="btn btn-danger btn-sm">Supprimer</a>
+            <a href="{{ path('app_account_edit_address', { 'id' : address.id }) }}" class="btn btn-info btn-sm">Editer</a>
+            <a href="{{ path('app_account_delete_address', { 'id' : address.id }) }}" class="btn btn-danger btn-sm">Supprimer</a>
         </div>
     </div>
     {% endfor %}

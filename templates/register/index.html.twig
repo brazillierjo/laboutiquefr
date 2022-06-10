@@ -2,8 +2,14 @@
 
 
 {% block content %}
-<h1>Inscription</h1>
+<h1 class="text-center mb-5">Inscription</h1>
 
-{{ form (form) }}
+<div class="col-md-4 mx-auto">
+    {{ form (form) }}
+</div>
 
+<hr>
+
+<p class="text-center">Ou <a href="{{ path('app_login') }}">connectez-vous</a> si vous êtes déjà inscrit 👋
+</p>
 {% endblock %}
