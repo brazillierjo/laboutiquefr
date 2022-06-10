@@ -1,4 +1,4 @@
-Full e-commerce website made with *Symfony*
+Full e-commerce website made with **Symfony 6**
 - twig
 - routing
 - forms validation
@@ -7,6 +7,8 @@ Full e-commerce website made with *Symfony*
 - Stripe
 - Security
 - Doctrine
+
+Install it localy 👇
 
 # clone project
 `git clone https://github.com/brazillierjo/laboutiquefr.git`
