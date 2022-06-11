@@ -2,6 +2,8 @@
 
 namespace App\Classe;
 
+use App\Entity\Product;
+use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 class Cart
@@ -63,5 +65,18 @@ class Cart
         $methoddelete->set('cart', $cart);
 
         return $methoddelete;
+    }
+
+    public function getFull(ProductRepository $productRepository)
+    {
+        $cartComplete = [];
+
+        foreach ($this->stack->getSession()->get('cart') as $id => $quantity) {
+            $cartComplete[] = [
+                'product' => $productRepository->findOneBy(['id' => $id]),
+                'quantity' => $quantity
+            ];
+        }
+        return $cartComplete;
     }
 }
