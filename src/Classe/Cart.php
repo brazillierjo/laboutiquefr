@@ -2,7 +2,6 @@
 
 namespace App\Classe;
 
-use App\Entity\Product;
 use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\RequestStack;
 

@@ -15,16 +15,18 @@ class CartController extends AbstractController
     {
         $cartCompete = [];
 
-        foreach ($cart->get() as $id => $quantity) {
-            $productObject = $entityManager->getRepository(Product::class)->find($id);
-            if (!$productObject) {
-                $cart->delete($id);
-                continue;
+        if ($cart->get() != null) {
+            foreach ($cart->get() as $id => $quantity) {
+                $productObject = $entityManager->getRepository(Product::class)->find($id);
+                if (!$productObject) {
+                    $cart->delete($id);
+                    continue;
+                }
+                $cartCompete[] = [
+                    'product' => $productObject,
+                    'quantity' => $quantity
+                ];
             }
-            $cartCompete[] = [
-                'product' => $productObject,
-                'quantity' => $quantity
-            ];
         }
 
         return $this->render('cart/index.html.twig', [
